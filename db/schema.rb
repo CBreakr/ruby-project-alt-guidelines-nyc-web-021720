@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_185658) do
+ActiveRecord::Schema.define(version: 2020_03_03_202514) do
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "defeated", default: false
+    t.integer "num_attempts", default: 0
+    t.integer "dungeon_id"
+  end
 
   create_table "dungeons", force: :cascade do |t|
     t.string "name"
