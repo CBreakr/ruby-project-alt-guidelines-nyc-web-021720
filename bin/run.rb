@@ -1,3 +1,3 @@
 require_relative '../config/environment'
 
-puts "hello world"
+get_monsters
