@@ -16,7 +16,7 @@ end
 
 def get_individual_monster(url)
     monster_hash = get_api_hash(url)
-    # monster = Monster.create(name: monster_hash["name"], hit_points: monster_hash["hit_points"], size: monster_hash["size"])
+    monster = Monster.create(name: monster_hash["name"], hit_points: monster_hash["hit_points"], size: monster_hash["size"])
 end
 
 def get_api_hash(url)
