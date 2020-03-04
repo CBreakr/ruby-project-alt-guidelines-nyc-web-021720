@@ -1,3 +1,5 @@
+require_relative "./state"
+
 class MainMenuState < State
     
     def start_up(input_value, user)
@@ -8,10 +10,10 @@ class MainMenuState < State
         choice_num = choice.to_i
         
         if  choice.to_i > 0 ||  choice_num <= options.length
-            if choice = 1
-                [CreateCampaignState, nil]
+            if choice == 1
+                # [CreateCampaignState.new, nil]
             else
-                [SelectCampignState,  nil]
+                # [SelectCampignState.new,  nil]
             end
         else
             false
