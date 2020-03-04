@@ -1,4 +1,3 @@
-require_relative "./state"
 
 class MainMenuState < State
 
@@ -15,7 +14,7 @@ class MainMenuState < State
         if choice_num == 1 then
             puts "you chose: #{options[choice_num-1]}"
             puts "should be Create new campiagn"
-            # [CreateCampaignState.new, nil]
+            [CreateCampaignState.new, nil]
         else
             puts "you chose: #{options[choice_num-1]}"
             puts "should be View existing campaign"
