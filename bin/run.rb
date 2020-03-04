@@ -13,3 +13,4 @@ Context.new.start(MainMenuState.new, user)
 
 # after user quits
 puts "Come back any time!"
+Monster.all
