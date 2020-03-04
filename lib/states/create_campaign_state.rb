@@ -1,14 +1,19 @@
 class CreateCampaignState < State
 
     def start_up(input_value, user)
-        puts "These are the available levels"
+        puts "These are the available dungeons"
         puts "Which level do you want to add to your Campaign?"
         Dungeon.all.map {|dungeon| dungeon.name}
     end
 
-    # def run_back(options, input_value, user, choice)
-        
-    # end
+    def run_back(options, input_value, user, choice)
+        if input_value
+            #go to campaign_details_state
+        else
+            #go to main menu state
+            [MainMenuState.new, nil]
+        end
+    end
 
     def select_option(options, input_value, user, choice_num)
         dungeon_name = options[choice_num -1]
