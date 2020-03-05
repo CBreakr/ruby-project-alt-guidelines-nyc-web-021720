@@ -1,5 +1,7 @@
-require_relative './view_campaign_state'
+require_relative './base_campaign_state'
 require_relative './base_encounter_state'
+require_relative './base_dungeon_state'
+
 class MainMenuState < State
 
     def initialize
