@@ -4,6 +4,7 @@ require_relative './dungeon_name_state'
 class DungeonDetailState < State
     def start_up(input_value, user_id)
         puts "DUNGEON DETAILS STATE".blue 
+        puts "Dungeon name: #{input_value.name} Difficulty: #{input_value.difficulty}"
         options = ["Edit name", "Edit difficulty", "Add encounter"]
         options += input_value.levels.all.map do |level|
             "Remove from dungeon: ".red + level.encounter.display
