@@ -1,4 +1,4 @@
-require_relative './create_dungeon_state'
+require_relative './dungeon_name_state'
 require_relative './dungeon_detail_state'
 
 class BaseDungeonState < State
@@ -16,7 +16,7 @@ class BaseDungeonState < State
 
     def select_option(choice, input_value, user_id)
         if choice == "Create new dungeon" then
-            [CreateDungeonState.new, nil]
+            [DungeonNameState.new, nil]
         else
             dun = Dungeon.find_by(name: choice)
             [DungeonDetailState.new, dun]

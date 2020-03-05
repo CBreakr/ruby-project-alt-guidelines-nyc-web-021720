@@ -1,7 +1,7 @@
 require_relative './base_dungeon_state'
 require_relative './dungeon_difficulty_state'
 
-class CreateDungeonState < State
+class DungeonNameState < State
 
     def initialize
         super

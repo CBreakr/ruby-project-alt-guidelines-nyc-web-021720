@@ -1,4 +1,5 @@
 require_relative './base_dungeon_state'
+require_relative './dungeon_name_state'
 
 class DungeonDetailState < State
     def start_up(input_value, user_id)
@@ -15,7 +16,7 @@ class DungeonDetailState < State
 
     def select_option(choice, input_value, user_id)
         if choice == "Edit name"
-            [CreateDungeonState.new, input_value]
+            [DungeonNameState.new, input_value]
         elsif choice == "Edit difficulty"  
             [DungeonDifficultyState.new, input_value]
         elsif choice == "Add encounter"

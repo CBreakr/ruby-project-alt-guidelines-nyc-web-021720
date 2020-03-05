@@ -1,5 +1,5 @@
 require_relative './add_encounter_to_dungeon_state'
-require_relative './create_dungeon_state'
+require_relative './dungeon_name_state'
 
 
 class DungeonDifficultyState < State
@@ -13,7 +13,7 @@ class DungeonDifficultyState < State
     end
 
     def run_back(options, input_value, user_id, choice)
-        [CreateDungeonState.new, nil]
+        [DungeonNameState.new, nil]
     end
 
     def select_option(choice, input_value, user_id)
