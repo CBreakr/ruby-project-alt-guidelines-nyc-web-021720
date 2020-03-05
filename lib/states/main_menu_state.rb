@@ -6,11 +6,11 @@ class MainMenuState < State
         @use_back = false
     end
     
-    def start_up(input_value, user)
+    def start_up(input_value, user_id)
         ["Create new Campaign", "View existing campaigns"]
     end
 
-    def select_option(choice, input_value, user) 
+    def select_option(choice, input_value, user_id) 
         if choice == "Create new Campaign" then
             [CreateCampaignState.new, nil]
         else choice == "View existing campaigns"

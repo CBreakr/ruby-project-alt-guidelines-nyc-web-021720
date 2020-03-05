@@ -9,7 +9,7 @@ user_name = gets.chomp
 user = User.find_or_create_by(name: user_name)
 
 # run the app
-Context.new.start(MainMenuState.new, user)
+Context.new.start(MainMenuState.new, user.id)
 
 # after user quits
 puts "Come back any time!"

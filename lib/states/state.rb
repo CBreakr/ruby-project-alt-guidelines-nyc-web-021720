@@ -7,14 +7,14 @@ class State
     end
 
     #
-    def run(input_value, user)
-        options = start_up(input_value, user)
+    def run(input_value, user_id)
+        options = start_up(input_value, user_id)
         display_messages(options)
-        evaluate(options, input_value, user)
+        evaluate(options, input_value, user_id)
     end
     
     #
-    def start_up(input_value, user)
+    def start_up(input_value, user_id)
     end
 
     # options is an array
@@ -34,13 +34,13 @@ class State
     end
 
     # return is going to be an array [next_state, output_value]
-    def evaluate(options, input_value, user)
+    def evaluate(options, input_value, user_id)
         choice = gets.chomp
         
-        result = interpret_defaults(options, input_value, user, choice)
+        result = interpret_defaults(options, input_value, user_id, choice)
         puts result
         # binding.pry
-        result ||= interpret(options, input_value, user, choice)
+        result ||= interpret(options, input_value, user_id, choice)
         
         # if result is nonsense, then re-run evaluate
         # if result is back, the go back
@@ -50,14 +50,14 @@ class State
         if result then
             result
         else
-            evaluate(options, input_value, user)
+            evaluate(options, input_value, user_id)
         end
     end
 
     #
-    def interpret_defaults(options, input_value, user, choice)
+    def interpret_defaults(options, input_value, user_id, choice)
         if (@use_back && choice == "b") then
-            return run_back(options, input_value, user, choice)
+            return run_back(options, input_value, user_id, choice)
         elsif(choice == "q") then
             return [nil, nil]
         end
@@ -66,29 +66,29 @@ class State
     end
 
     #
-    def run_back(options, input_value, user, choice)
+    def run_back(options, input_value, user_id, choice)
         puts "go back!"
         false
     end
 
     #
-    def interpret(options, input_value, user, choice)        
+    def interpret(options, input_value, user_id, choice)        
         # 
         if @use_options
             choice_num = choice.to_i
             
             if valid_choice?(choice_num, options) then
-                select_option(options[choice_num - 1], input_value, user)
+                select_option(options[choice_num - 1], input_value, user_id)
             else
                 false
             end
         else
-            select_option(choice, input_value, user)
+            select_option(choice, input_value, user_id)
         end
     end
 
     #
-    def select_option(choice, input_value, user)
+    def select_option(choice, input_value, user_id)
     end
 
     #
