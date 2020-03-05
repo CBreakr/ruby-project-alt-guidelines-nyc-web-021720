@@ -21,8 +21,12 @@ class CampaignDetailState < State
         elsif choice == "edit"
             [CreateCampaignState.new, input_value]
         elsif choice == "delete"
-            input_value.destroy
-            [MainMenuState.new, nil]
+            if confirmation? then
+                input_value.destroy
+                [MainMenuState.new, nil]
+            else
+                [self, input_value]
+            end
         end
     end
 end

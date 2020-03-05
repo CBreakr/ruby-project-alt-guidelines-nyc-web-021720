@@ -95,4 +95,20 @@ class State
     def valid_choice?(choice_num, options)
         choice_num > 0 && choice_num <= options.length
     end
+
+    #
+    def confirmation?
+        puts "Are you sure? (y/n)".red
+        response = gets.chomp
+        while !is_yes_or_no?(response)
+            response = gets.chomp
+        end
+
+        response.downcase == "y" ? true : false        
+    end
+
+    #
+    def is_yes_or_no?(val)
+        val.downcase == "y" || val.downcase == "n"
+    end
 end
