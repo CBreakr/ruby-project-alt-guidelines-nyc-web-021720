@@ -17,8 +17,8 @@ class CreateCampaignState < State
         end
     end
 
-    def select_option(options, input_value, user, choice_num)
-        dungeon_name = options[choice_num -1]
+    def select_option(choice, input_value, user)
+        dungeon_name = choice
         puts "you added level #{dungeon_name}"
         found_dun = Dungeon.find_by(name: dungeon_name)
         Campaign.create(user: user, dungeon: found_dun)

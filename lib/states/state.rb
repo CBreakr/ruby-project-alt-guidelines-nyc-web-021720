@@ -1,14 +1,15 @@
 class State
-    attr_accessor :use_back
+    attr_accessor :use_back, :use_options
 
     def initialize
         @use_back = true
+        @use_options = true
     end
 
     #
     def run(input_value, user)
         options = start_up(input_value, user)
-        display_options(options)
+        display_messages(options)
         evaluate(options, input_value, user)
     end
     
@@ -17,9 +18,13 @@ class State
     end
 
     # options is an array
-    def display_options(options)
-        options.each_with_index do |option, index|
-            puts "#{index + 1}: #{option}"
+    def display_messages(options)
+        if @use_options
+            options.each_with_index do |option, index|
+                puts "#{index + 1}: #{option}"
+            end
+        else
+            puts options
         end
 
         if(@use_back) then
@@ -68,17 +73,22 @@ class State
 
     #
     def interpret(options, input_value, user, choice)        
-        choice_num = choice.to_i
-        
-        if valid_choice?(choice_num, options) then
-            select_option(options, input_value, user, choice_num)
+        # 
+        if @use_options
+            choice_num = choice.to_i
+            
+            if valid_choice?(choice_num, options) then
+                select_option(options[choice_num - 1], input_value, user)
+            else
+                false
+            end
         else
-            false
+            select_option(choice, input_value, user)
         end
     end
 
     #
-    def select_option(options, input_value, user, choice_num)
+    def select_option(choice, input_value, user)
     end
 
     #

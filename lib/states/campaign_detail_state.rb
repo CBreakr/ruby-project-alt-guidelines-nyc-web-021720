@@ -14,16 +14,15 @@ class CampaignDetailState < State
         [ViewCampaignState.new, nil]
     end
 
-    def select_option(options, input_value, user, choice_num)
+    def select_option(choice, input_value, user)
         #possibly abstract assigning choice_num to a variable
-        command = options[choice_num - 1]
-        if command == "run"
+        if choice  == "run"
             puts "the game is starting"
-        elsif command == "edit"
+        elsif choice == "edit"
             [CreateCampaignState.new, input_value]
-        elsif command == "delete"
-            binding.pry
+        elsif choice == "delete"
             input_value.destroy
+            binding.pry
             [MainMenuState.new, nil]
         end
     end

@@ -12,9 +12,9 @@ class ViewCampaignState < State
         [MainMenuState.new, nil]
     end
 
-    def select_option(options, input_value, user, choice_num)
+    def select_option(choice, input_value, user)
         selected_camp = user.campaigns.find do |campaign|
-            campaign.dungeon.name == options[choice_num - 1]
+            campaign.dungeon.name == choice
         end
         [CampaignDetailState.new, selected_camp]
     end
