@@ -33,7 +33,8 @@ class State
         choice = gets.chomp
         
         result = interpret_defaults(options, input_value, user, choice)
-
+        puts result
+        # binding.pry
         result ||= interpret(options, input_value, user, choice)
         
         # if result is nonsense, then re-run evaluate
@@ -51,7 +52,7 @@ class State
     #
     def interpret_defaults(options, input_value, user, choice)
         if (@use_back && choice == "b") then
-            run_back(options, input_value, user, choice)
+            return run_back(options, input_value, user, choice)
         elsif(choice == "q") then
             return [nil, nil]
         end

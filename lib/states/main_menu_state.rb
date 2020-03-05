@@ -1,5 +1,4 @@
-require_relative "./state"
-
+require_relative './view_campaign_state'
 class MainMenuState < State
 
     def initialize
@@ -11,15 +10,10 @@ class MainMenuState < State
     end
 
     def select_option(options, input_value, user, choice_num)     
-        puts "chose option: #{choice_num}"
         if choice_num == 1 then
-            puts "you chose: #{options[choice_num-1]}"
-            puts "should be Create new campiagn"
-            # [CreateCampaignState.new, nil]
+            [CreateCampaignState.new, nil]
         else
-            puts "you chose: #{options[choice_num-1]}"
-            puts "should be View existing campaign"
-            # [SelectCampignState.new,  nil]
+            [ViewCampaignState.new,  nil]
         end
     end
 end
