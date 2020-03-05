@@ -5,5 +5,6 @@ ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/develo
 require_relative "../lib/states/state"
 require_all 'app'
 require_all 'lib'
+require "colorize"
 ActiveRecord::Base.logger = nil
 
