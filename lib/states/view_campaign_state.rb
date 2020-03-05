@@ -2,6 +2,7 @@ require_relative './main_menu_state'
 class ViewCampaignState < State
     def start_up(input_value, user)
         puts "These are the available campaigns"
+        # binding.pry
         user.campaigns.map do |campaign|
             campaign.dungeon.name
         end
@@ -15,6 +16,6 @@ class ViewCampaignState < State
         selected_camp = user.campaigns.find do |campaign|
             campaign.dungeon.name == options[choice_num - 1]
         end
-        [CampaignDetailsState.new, selected_camp]
+        [CampaignDetailState.new, selected_camp]
     end
 end

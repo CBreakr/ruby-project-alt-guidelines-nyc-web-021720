@@ -1,3 +1,4 @@
+require_relative './campaign_detail_state'
 class CreateCampaignState < State
 
     def start_up(input_value, user)
@@ -9,6 +10,7 @@ class CreateCampaignState < State
     def run_back(options, input_value, user, choice)
         if input_value
             #go to campaign_details_state
+            [CampaignDetailState.new, input_value]
         else
             #go to main menu state
             [MainMenuState.new, nil]
