@@ -5,7 +5,7 @@ class BaseEncounterState < State
     def start_up(input_value, user_id)
         options = ["Create new encounter"]
         options += Encounter.all.map do |enc|
-            "#{enc.monster.name} x #{enc.num_enemies} (id::#{enc.id})"
+            enc.display
         end        
         options
     end
@@ -18,13 +18,10 @@ class BaseEncounterState < State
         if choice == "Create new encounter" then
             [CreateEncounterState.new, nil]
         else
-            enc = Encounter.find(get_encounter_id(choice))
+            enc = Encounter.find_by_display_string(choice)
             [EncounterDetailState.new, enc]
         end
     end
 
-    #
-    def get_encounter_id(option)
-        option.split("::")[1].gsub(")", "")
-    end
+
 end

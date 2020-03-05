@@ -3,7 +3,7 @@ require_relative './number_of_monsters_state'
 
 class EncounterDetailState < State
     def start_up(input_value, user_id)
-        puts "#{input_value.monster.name} x #{input_value.num_enemies} (id::#{input_value.id})".blue
+        puts input_value.display.blue
         ["Change Number of Monsters", "Delete Encounter"]
     end
 
