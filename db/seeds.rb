@@ -7,11 +7,18 @@ User.delete_all
 
 get_monsters
 
-e1 = Encounter.create(num_enemies: 3, monster_id:1)
-e2 = Encounter.create(num_enemies: 4, monster_id:2)
-black = Encounter.create(num_enemies: 1, monster_id:3)
-blue = Encounter.create(num_enemies: 1, monster_id:4)
-brass = Encounter.create(num_enemies: 1, monster_id:5)
+
+aboleth = Monster.find_by(name: "Aboleth")
+acolyte = Monster.find_by(name: "Acolyte")
+black_dragon = Monster.find_by(name: "Adult Black Dragon")
+blue_dragon = Monster.find_by(name: "Adult Blue Dragon")
+brass_dragon = Monster.find_by(name: "Adult Brass Dragon")
+
+e1 = Encounter.create(num_enemies: 3, monster: aboleth)
+e2 = Encounter.create(num_enemies: 4, monster: acolyte)
+black = Encounter.create(num_enemies: 1, monster: black_dragon)
+blue = Encounter.create(num_enemies: 1, monster: blue_dragon)
+brass = Encounter.create(num_enemies: 1, monster: brass_dragon)
 
 d1 = Dungeon.create(name:"Adult Black Dragon Boss", difficulty: 16)
 d2 = Dungeon.create(name:"Adult Blue Dragon Boss", difficulty: 15)
