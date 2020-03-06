@@ -15,5 +15,6 @@ user = User.find_or_create_by(name: user_name)
 Context.new.start(MainMenuState.new, user.id)
 
 # after user quits
-puts "Come back any time!"
-Monster.all
+puts ""
+puts "Come back any time!".green
+puts ""
