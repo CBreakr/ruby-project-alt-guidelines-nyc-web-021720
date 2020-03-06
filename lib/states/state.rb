@@ -30,7 +30,7 @@ class State
         end
 
         if(@use_back) then
-            puts "   (enter b to go back to previous menu)".cyan
+            puts "   (enter b to go back to previous menu)".yellow
         end
         puts "   (enter q to quit)".red
     end
