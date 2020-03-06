@@ -67,7 +67,6 @@ class State
 
     #
     def run_back(options, input_value, user_id, choice)
-        puts "go back!"
         false
     end
 
