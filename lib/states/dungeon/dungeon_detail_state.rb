@@ -8,8 +8,8 @@ class DungeonDetailState < State
     end
 
     def start_up(input_value, user_id)
-        puts "Dungeon name: #{input_value.name} Difficulty: #{input_value.difficulty}"
-        options = ["Edit name", "Edit difficulty", "Add encounter"]
+        puts "Dungeon name: #{input_value.name} Difficulty: #{input_value.difficulty_score}"
+        options = ["Edit name", "Add encounter"] # , "Edit difficulty"
         options += input_value.levels.all.map do |level|
             "Remove from dungeon: ".red + level.encounter.display
         end
@@ -23,13 +23,17 @@ class DungeonDetailState < State
     def select_option(choice, input_value, user_id)
         if choice == "Edit name"
             [DungeonNameState.new, input_value]
-        elsif choice == "Edit difficulty"  
-            [DungeonDifficultyState.new, input_value]
+        # elsif choice == "Edit difficulty"  
+        #     [DungeonDifficultyState.new, input_value]
         elsif choice == "Add encounter"
             [AddEncounterToDungeonState.new, input_value]
         elsif choice == "Delete this dungeon"
-            input_value.delete
-            [BaseDungeonState.new, nil]
+            if confirmation? then
+                input_value.delete
+                [BaseDungeonState.new, nil]
+            else
+                [self, input_value]
+            end
         else
             if confirmation?
                 enc = Encounter.find_by_display_string(choice.gsub("Remove from dungeon: ", ""))

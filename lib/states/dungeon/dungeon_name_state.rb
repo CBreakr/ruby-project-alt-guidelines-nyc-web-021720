@@ -1,5 +1,5 @@
 require_relative './base_dungeon_state'
-require_relative './dungeon_difficulty_state'
+# require_relative './dungeon_difficulty_state'
 require_relative './dungeon_detail_state'
 
 class DungeonNameState < State
@@ -29,11 +29,19 @@ class DungeonNameState < State
     end
 
     def select_option(choice, input_value, user_id)
+        # if input_value.is_a?(Dungeon)
+        #     input_value.update(name: choice)
+        #     [DungeonDetailState.new, input_value]
+        # else
+        #     [DungeonDifficultyState.new, choice]
+        # end
+
         if input_value.is_a?(Dungeon)
             input_value.update(name: choice)
             [DungeonDetailState.new, input_value]
         else
-            [DungeonDifficultyState.new, choice]
+            dun = Dungeon.create(name: choice)
+            [AddEncounterToDungeonState.new, dun]
         end
     end
 end

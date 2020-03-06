@@ -20,9 +20,9 @@ black = Encounter.create(num_enemies: 1, monster: black_dragon)
 blue = Encounter.create(num_enemies: 1, monster: blue_dragon)
 brass = Encounter.create(num_enemies: 1, monster: brass_dragon)
 
-d1 = Dungeon.create(name:"Adult Black Dragon Boss", difficulty: 16)
-d2 = Dungeon.create(name:"Adult Blue Dragon Boss", difficulty: 15)
-d3 = Dungeon.create(name:"Adult Brass Dragon Boss", difficulty: 15)
+d1 = Dungeon.create(name:"Adult Black Dragon Boss") #, difficulty: 16)
+d2 = Dungeon.create(name:"Adult Blue Dragon Boss") #, difficulty: 15)
+d3 = Dungeon.create(name:"Adult Brass Dragon Boss") #, difficulty: 15)
 
 Level.create(dungeon: d1, encounter: e1)
 Level.create(dungeon: d1, encounter: e2)

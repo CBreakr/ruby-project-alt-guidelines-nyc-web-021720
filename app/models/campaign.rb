@@ -40,15 +40,6 @@ class Campaign < ActiveRecord::Base
     end
 
     def difficulty_score
-        # how do I want to calculte this, based on encounters?
-        # this would be based more on the highest than the average
-
-        # base it on the probability!
-
-        score = (1 - dungeon.encounters.reduce(1) do |total, enc|
-            total *= (1 - enc.get_difficulty)
-        end) * 100
-
-        '%.1f' % score
+        dungeon.difficulty_score
     end
 end

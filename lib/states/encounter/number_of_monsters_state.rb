@@ -15,7 +15,7 @@ class NumberOfMonstersState < State
 
     def start_up(input_value, user_id)
         if is_input_monster?(input_value) then
-            puts "enter the number of #{input_value.name} in this encounter"
+            puts "> enter the number of #{input_value.name} in this encounter"
         else
             puts "currently #{input_value.num_enemies} of #{input_value.monster.name} in this encounter"
             puts "> how many would you like instead?"
