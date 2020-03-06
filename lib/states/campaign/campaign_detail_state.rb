@@ -3,6 +3,11 @@ require_relative '../main_menu_state'
 require_relative './base_campaign_state'
 
 class CampaignDetailState < State
+
+    def header_text
+        "CAMPAIGN DETAILS"
+    end
+
     def start_up(input_value, user_id)
         puts "Campaign selected: #{input_value.dungeon.name}"
         puts "Campaign defeat status: #{input_value.defeated}"

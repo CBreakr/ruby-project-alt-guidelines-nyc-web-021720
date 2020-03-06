@@ -2,6 +2,11 @@ require_relative './dungeon_name_state'
 require_relative './dungeon_detail_state'
 
 class BaseDungeonState < State
+
+    def header_text
+        "DUNGEON BASE"
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new dungeon"]
         options += Dungeon.all.map do |dungeon|

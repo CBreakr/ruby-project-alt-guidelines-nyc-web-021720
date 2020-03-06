@@ -4,6 +4,10 @@ require_relative './encounter_detail_state'
 
 class NumberOfMonstersState < State
 
+    def header_text
+        "NUMBER OF MONSTERS"
+    end
+
     def initialize
         super
         @use_options = false
@@ -14,7 +18,7 @@ class NumberOfMonstersState < State
             puts "enter the number of #{input_value.name} in this encounter"
         else
             puts "currently #{input_value.num_enemies} of #{input_value.monster.name} in this encounter"
-            puts "how many would you like instead?"
+            puts "> how many would you like instead?"
         end
     end
 

@@ -2,6 +2,11 @@ require_relative './base_encounter_state'
 require_relative './number_of_monsters_state'
 
 class EncounterDetailState < State
+
+    def header_text
+        "ENCOUNTER DETAILS"
+    end
+
     def start_up(input_value, user_id)
         puts input_value.display.blue
         ["Change Number of Monsters", "Delete Encounter"]

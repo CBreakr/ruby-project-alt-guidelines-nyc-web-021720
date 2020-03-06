@@ -1,8 +1,13 @@
 require_relative './base_dungeon_state'
 
 class AddEncounterToDungeonState < State
+
+    def header_text
+        "ADD ENCOUNTER TO DUNGEON"
+    end
+
     def start_up(input_value, user_id)
-        puts "ADD ENCOUNTER TO DUNGEON STATE".yellow
+        # puts "ADD ENCOUNTER TO DUNGEON STATE".yellow
         options = ["DONE"]
         options += Encounter.all.map do |enc|
             enc.display

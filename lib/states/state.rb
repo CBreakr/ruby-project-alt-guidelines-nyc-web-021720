@@ -9,6 +9,7 @@ class State
     #
     def run(input_value, user_id)
         puts ""
+        puts header_text.blue
         options = start_up(input_value, user_id)
         display_messages(options)
         evaluate(options, input_value, user_id)
@@ -29,9 +30,9 @@ class State
         end
 
         if(@use_back) then
-            puts "enter b to go back to previous menu".cyan
+            puts "   (enter b to go back to previous menu)".cyan
         end
-        puts "enter q to quit".red
+        puts "   (enter q to quit)".red
     end
 
     # return is going to be an array [next_state, output_value]
@@ -111,5 +112,9 @@ class State
     #
     def is_yes_or_no?(val)
         val.downcase == "y" || val.downcase == "n"
+    end
+
+    #
+    def header_text
     end
 end

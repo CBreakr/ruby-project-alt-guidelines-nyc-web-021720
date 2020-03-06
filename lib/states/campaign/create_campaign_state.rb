@@ -3,6 +3,10 @@ require_relative './base_campaign_state'
 
 class CreateCampaignState < State
 
+    def header_text
+        "CREATE CAMPAIGN"
+    end
+
     def start_up(input_value, user_id)
         puts "These are the available dungeons"
         puts "Which level do you want to add to your Campaign?"

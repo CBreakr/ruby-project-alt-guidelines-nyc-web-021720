@@ -3,6 +3,11 @@ require_relative './create_campaign_state'
 require_relative './campaign_detail_state'
 
 class BaseCampaignState < State
+
+    def header_text
+        "CAMPAIGNS BASE"
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new campaign"] + User.find(user_id).campaigns.map do |campaign|
             campaign.display

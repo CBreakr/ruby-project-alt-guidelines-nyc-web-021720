@@ -9,11 +9,15 @@ class DungeonDifficultyState < State
         @use_options = false
     end
 
+    def header_text
+        "DUNGEON DETAILS"
+    end
+
     def start_up(input_value, user_id)
         if input_value
             puts "current dungeon: #{input_value.name}, difficulty #{input_value.difficulty}"
         end
-        puts "Enter dungeon difficulty as a " + "number".red
+        puts "> Enter dungeon difficulty as a " + "number".red
     end
 
     def run_back(options, input_value, user_id, choice)

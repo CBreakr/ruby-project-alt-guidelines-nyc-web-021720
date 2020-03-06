@@ -8,6 +8,10 @@ class MainMenuState < State
         super
         @use_back = false
     end
+
+    def header_text
+        "MAIN MENU"
+    end
     
     def start_up(input_value, user_id)
         ["Encounters", "Dungeons", "Campaigns"]

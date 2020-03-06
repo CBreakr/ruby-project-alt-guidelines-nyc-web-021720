@@ -9,11 +9,15 @@ class DungeonNameState < State
         @use_options = false
     end
 
+    def header_text
+        "DUNGEON NAME"
+    end
+
     def start_up(input_value, user_id)        
         if input_value
             puts "current dungeon: #{input_value.name}"
         end
-        puts "Enter dungeon name"
+        puts "> Enter dungeon name"
     end
 
     def run_back(options, input_value, user_id, choice)

@@ -2,6 +2,11 @@ require_relative './create_encounter_state'
 require_relative './encounter_detail_state'
 
 class BaseEncounterState < State
+
+    def header_text
+        "ENCOUNTER BASE"
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new encounter"]
         options += Encounter.all.map do |enc|
