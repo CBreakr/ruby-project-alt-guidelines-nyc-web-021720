@@ -14,6 +14,7 @@ class DungeonDetailState < State
         options += input_value.levels.all.map do |level|
             "Remove from dungeon: ".red + level.encounter.display
         end
+        options << "Delete this dungeon"
     end
 
     def run_back(options, input_value, user_id, choice)
@@ -27,6 +28,9 @@ class DungeonDetailState < State
             [DungeonDifficultyState.new, input_value]
         elsif choice == "Add encounter"
             [AddEncounterToDungeonState.new, input_value]
+        elsif choice == "Delete this dungeon"
+            input_value.delete
+            [BaseDungeonState.new, nil]
         else
             if confirmation?
                 enc = Encounter.find_by_display_string(choice.gsub("Remove from dungeon: ", ""))

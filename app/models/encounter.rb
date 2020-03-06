@@ -16,4 +16,9 @@ class Encounter < ActiveRecord::Base
     def self.find_by_display_string(display_string)
         find(get_encounter_id_from_display_string(display_string))
     end
+
+    #
+    def get_difficulty
+        0.2 + 0.005 * (monster.challenge+0.5) * num_enemies
+    end
 end

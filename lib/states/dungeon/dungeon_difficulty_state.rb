@@ -14,14 +14,14 @@ class DungeonDifficultyState < State
     end
 
     def start_up(input_value, user_id)
-        if input_value
+        if input_value.is_a?(Dungeon)
             puts "current dungeon: #{input_value.name}, difficulty #{input_value.difficulty}"
         end
         puts "> Enter dungeon difficulty as a " + "number".red
     end
 
     def run_back(options, input_value, user_id, choice)
-        if input_value
+        if input_value.is_a?(Dungeon)
             [DungeonDetailState.new, input_value]
         else
             [DungeonNameState.new, nil]
@@ -31,7 +31,7 @@ class DungeonDifficultyState < State
     def select_option(choice, input_value, user_id)
         choice_as_num = choice.to_i
         if choice_as_num > 0
-            if input_value
+            if input_value.is_a?(Dungeon)
                 input_value.update(difficulty: choice_as_num)
                 [DungeonDetailState.new, input_value]
             else

@@ -20,7 +20,12 @@ class AddEncounterToDungeonState < State
 
     def select_option(choice, input_value, user_id)
         if choice == "DONE"
-            [BaseDungeonState.new,nil]
+            if input_value.encounters.count > 0 then
+                [BaseDungeonState.new,nil]
+            else
+                puts "Please add at least one encounter".red
+                [self, input_value]
+            end
         else
             enc = Encounter.find_by_display_string(choice)
             Level.create(dungeon: input_value, encounter: enc)

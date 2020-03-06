@@ -29,7 +29,7 @@ class DungeonNameState < State
     end
 
     def select_option(choice, input_value, user_id)
-        if input_value
+        if input_value.is_a?(Dungeon)
             input_value.update(name: choice)
             [DungeonDetailState.new, input_value]
         else

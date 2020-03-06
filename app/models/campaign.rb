@@ -3,11 +3,52 @@ class Campaign < ActiveRecord::Base
     belongs_to :dungeon
 
     def display
-        str =  "#{dungeon.name}, attempts: #{num_attempts} (id::#{id})"
-        defeated ? str.red : str.green
+        defeated_status = self.defeated ? ", " + "DEFEATED".green : ""
+        str =  "#{dungeon.name}" + ", difficulty: #{difficulty_score}".yellow + "#{defeated_status}, attempts: #{num_attempts} (id::#{id})"
+        # defeated ? str.red : str.green
     end
 
     def self.find_by_display_string(display_string)
         find(display_string.split("::")[1].gsub(")", ""))
+    end
+
+    def run
+        success = true
+        dungeon.encounters.each do |enc|
+            puts "now fighting: "
+            puts enc.display
+            if !determine_success(enc) then
+                success = false
+                break
+            end
+        end
+
+        self.num_attempts = self.num_attempts + 1
+
+        if success then
+            self.defeated = true
+            puts "you are victorious!"
+        else
+            puts "you have been defeated!"
+        end
+
+        self.save
+    end
+
+    def determine_success(encounter)        
+        rand > encounter.get_difficulty
+    end
+
+    def difficulty_score
+        # how do I want to calculte this, based on encounters?
+        # this would be based more on the highest than the average
+
+        # base it on the probability!
+
+        score = (1 - dungeon.encounters.reduce(1) do |total, enc|
+            total *= (1 - enc.get_difficulty)
+        end) * 100
+
+        '%.1f' % score
     end
 end

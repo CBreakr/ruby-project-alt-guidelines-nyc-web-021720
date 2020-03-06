@@ -37,29 +37,6 @@ class CampaignDetailState < State
 
     def run_game(campaign)
         puts "the game is starting".green
-        success = true
-        campaign.dungeon.encounters.each do |enc|
-            puts "now fighting: "
-            puts enc.display
-            if !determine_success(enc) then
-                success = false
-                break
-            end
-        end
-
-        campaign.num_attempts += 1
-
-        if success then
-            campaign.defeated = true
-            puts "you are victorious!"
-        else
-            puts "you have been defeated!"
-        end
-
-        campaign.save
-    end
-
-    def determine_success(encounter)
-        rand > 0.2
+        campaign.run
     end
 end
