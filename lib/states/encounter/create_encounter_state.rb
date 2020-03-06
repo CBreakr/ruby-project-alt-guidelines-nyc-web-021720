@@ -15,7 +15,7 @@ class CreateEncounterState < State
     end
 
     def run_back(options, input_value, user_id, choice)
-        [CreateEncounterState.new, nil]
+        [BaseEncounterState.new, nil]
     end
 
     def select_option(choice, input_value, user_id)

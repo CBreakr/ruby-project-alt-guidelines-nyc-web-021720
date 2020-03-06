@@ -6,9 +6,10 @@ class Context
         while current_state 
             # current_state.run returns an array with two elements
             current_state, next_input = current_state.run(next_input, user_id)
-            # current_state.run(next_input, user)
-            # current_state = MainMenuState
-            # next_input =  nil
+
+            if current_state == "start" then
+                current_state = starting_state
+            end
         end
     end
 end

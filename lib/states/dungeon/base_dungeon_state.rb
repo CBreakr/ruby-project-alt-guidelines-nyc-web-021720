@@ -7,6 +7,11 @@ class BaseDungeonState < State
         "DUNGEON BASE"
     end
 
+    def initialize
+        super
+        @use_main_menu = false
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new dungeon"]
         options += Dungeon.all.map do |dungeon|

@@ -19,6 +19,6 @@ class Encounter < ActiveRecord::Base
 
     #
     def get_difficulty
-        0.2 + 0.005 * (monster.challenge+0.5) * num_enemies
+        0.2 + 0.005 * (monster.challenge + 0.5) * num_enemies
     end
 end

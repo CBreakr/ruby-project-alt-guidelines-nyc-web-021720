@@ -27,9 +27,9 @@ class Campaign < ActiveRecord::Base
 
         if success then
             self.defeated = true
-            puts "you are victorious!"
+            puts "you are victorious!".green
         else
-            puts "you have been defeated!"
+            puts "you have been defeated!".red
         end
 
         self.save

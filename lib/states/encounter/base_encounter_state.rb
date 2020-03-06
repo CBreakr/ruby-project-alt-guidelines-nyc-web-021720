@@ -7,6 +7,11 @@ class BaseEncounterState < State
         "ENCOUNTER BASE"
     end
 
+    def initialize
+        super
+        @use_main_menu = false
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new encounter"]
         options += Encounter.all.map do |enc|

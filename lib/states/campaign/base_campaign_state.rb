@@ -8,6 +8,11 @@ class BaseCampaignState < State
         "CAMPAIGNS BASE"
     end
 
+    def initialize
+        super
+        @use_main_menu = false
+    end
+
     def start_up(input_value, user_id)
         options = ["Create new campaign"] + User.find(user_id).campaigns.map do |campaign|
             campaign.display

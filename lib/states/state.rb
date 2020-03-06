@@ -4,10 +4,12 @@ class State
     def initialize
         @use_back = true
         @use_options = true
+        @use_main_menu = true
     end
 
     #
     def run(input_value, user_id)
+        puts ""
         puts ""
         puts header_text.blue
         options = start_up(input_value, user_id)
@@ -32,6 +34,11 @@ class State
         if(@use_back) then
             puts "   (enter b to go back to previous menu)".yellow
         end
+
+        if(@use_main_menu) then
+            puts "   (enter m to go to the main menu)".yellow
+        end
+
         puts "   (enter q to quit)".red
     end
 
@@ -61,6 +68,8 @@ class State
     def interpret_defaults(options, input_value, user_id, choice)
         if (@use_back && choice == "b") then
             return run_back(options, input_value, user_id, choice)
+        elsif(@use_main_menu && choice == "m") then
+            return ["start", nil]
         elsif(choice == "q") then
             return [nil, nil]
         end

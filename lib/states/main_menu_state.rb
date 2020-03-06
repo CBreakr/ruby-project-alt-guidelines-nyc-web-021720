@@ -7,6 +7,7 @@ class MainMenuState < State
     def initialize
         super
         @use_back = false
+        @use_main_menu = false
     end
 
     def header_text
