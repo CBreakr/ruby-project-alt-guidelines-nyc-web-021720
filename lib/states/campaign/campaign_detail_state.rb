@@ -18,7 +18,7 @@ class CampaignDetailState < State
     def select_option(choice, input_value, user_id)
         #possibly abstract assigning choice_num to a variable
         if choice  == "run"
-            puts "the game is starting".green
+            run_game(input_value)
             [BaseCampaignState.new, nil]
         elsif choice == "delete"
             if confirmation? then
@@ -28,5 +28,33 @@ class CampaignDetailState < State
                 [self, input_value]
             end
         end
+    end
+
+    def run_game(campaign)
+        puts "the game is starting".green
+        success = true
+        campaign.dungeon.encounters.each do |enc|
+            puts "now fighting: "
+            puts enc.display
+            if !determine_success(enc) then
+                success = false
+                break
+            end
+        end
+
+        campaign.num_attempts += 1
+
+        if success then
+            campaign.defeated = true
+            puts "you are victorious!"
+        else
+            puts "you have been defeated!"
+        end
+
+        campaign.save
+    end
+
+    def determine_success(encounter)
+        rand > 0.2
     end
 end

@@ -8,6 +8,7 @@ class State
 
     #
     def run(input_value, user_id)
+        puts ""
         options = start_up(input_value, user_id)
         display_messages(options)
         evaluate(options, input_value, user_id)
@@ -28,13 +29,14 @@ class State
         end
 
         if(@use_back) then
-            puts "enter b to go back to previous menu"
+            puts "enter b to go back to previous menu".cyan
         end
-        puts "enter q to quit"
+        puts "enter q to quit".red
     end
 
     # return is going to be an array [next_state, output_value]
     def evaluate(options, input_value, user_id)
+        print "> "
         choice = gets.chomp
         
         result = interpret_defaults(options, input_value, user_id, choice)
