@@ -2,15 +2,27 @@ require 'rest-client'
 require 'json'
 require 'pry'
 
+#
+# guarantee that we get the first 5 monsters in the DB
+# then a random sample of 10 more monsters
+#
 def get_monsters
     base_url = 'http://www.dnd5eapi.co'
     monster_array = get_api_hash("#{base_url}/api/monsters")
+    
     count = 0
-    monster_array["results"].first(5).map do |monster|
+    secondary_array = []
+    monster_array["results"].first(100).map do |monster|
         count += 1
-        puts count
-        get_individual_monster("#{base_url}#{monster["url"]}")
-        # puts "#{base_url}#{monster["url"]}"
+        if count <= 5
+            get_individual_monster("#{base_url}#{monster["url"]}")
+        else
+            secondary_array << "#{base_url}#{monster["url"]}"
+        end
+    end
+
+    secondary_array.sample(15).map do |monster_url|
+        get_individual_monster(monster_url)
     end
 end
 
