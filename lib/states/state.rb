@@ -38,7 +38,7 @@ class State
         choice = gets.chomp
         
         result = interpret_defaults(options, input_value, user_id, choice)
-        puts result
+        
         # binding.pry
         result ||= interpret(options, input_value, user_id, choice)
         

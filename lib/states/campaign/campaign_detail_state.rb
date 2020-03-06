@@ -1,5 +1,5 @@
 require_relative './create_campaign_state'
-require_relative './main_menu_state'
+require_relative '../main_menu_state'
 require_relative './base_campaign_state'
 
 class CampaignDetailState < State

@@ -1,6 +1,6 @@
-require_relative './base_campaign_state'
-require_relative './base_encounter_state'
-require_relative './base_dungeon_state'
+require_relative './campaign/base_campaign_state'
+require_relative './encounter/base_encounter_state'
+require_relative './dungeon/base_dungeon_state'
 
 class MainMenuState < State
 

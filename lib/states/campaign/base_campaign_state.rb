@@ -1,4 +1,4 @@
-require_relative './main_menu_state'
+require_relative '../main_menu_state'
 require_relative './create_campaign_state'
 require_relative './campaign_detail_state'
 
