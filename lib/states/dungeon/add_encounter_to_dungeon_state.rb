@@ -8,6 +8,7 @@ class AddEncounterToDungeonState < State
 
     def start_up(input_value, user_id)
         # puts "ADD ENCOUNTER TO DUNGEON STATE".yellow
+        puts input_value.name.blue
         options = ["DONE"]
         options += Encounter.all.map do |enc|
             enc.display
